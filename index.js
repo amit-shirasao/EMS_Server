@@ -1,5 +1,9 @@
+const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
+
+const connectionString =
+  "mongodb+srv://amitshirasao_db_user:FgZd1zjI7UgqtG3M@employee.jkjzosd.mongodb.net/";
 
 // Middleware
 app.use(express.json());
@@ -64,6 +68,12 @@ app.delete("/:id", (req, res) => {
 });
 
 //#endregion: API calls.
+
+// Mongoose Code:
+
+mongoose.connect(connectionString).then(() => {
+  console.log("MongoDB is connected.");
+});
 
 app.listen(3000, () => {
   console.log("Express.js sever is listening on http://localhost:3000.");
