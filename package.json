@@ -1,0 +1,20 @@
+{
+  "name": "ems_server",
+  "version": "1.0.0",
+  "description": "This is the backend of Employee Management System.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "prod": "node index.js"
+  },
+  "keywords": [
+    "EMS",
+    "server",
+    "service"
+  ],
+  "author": "Amit Shirasao",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
