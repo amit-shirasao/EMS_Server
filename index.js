@@ -31,9 +31,11 @@ app.post("/", async (req, res) => {
 
 // Read All     GET
 app.get("/", (req, res) => {
-  res.send({
-    message: "You requested to get all the employees.",
-    data: null,
+  employeeModel.find().then((allEmployees) => {
+    res.send({
+      message: "You requested to get all the employees.",
+      data: allEmployees,
+    });
   });
 });
 
