@@ -69,10 +69,14 @@ app.put("/:id", (req, res) => {
 app.patch("/:id", (req, res) => {
   let id = req.params.id;
   let updatedEmployee = req.body;
-  res.send({
-    message: `You requuested to update (partially) the employee with id ${id}.`,
-    data: updatedEmployee,
-  });
+  employeeModel
+    .findByIdAndUpdate(id, updatedEmployee, { new: true })
+    .then((returnedUpdatedEmployee) => {
+      res.send({
+        message: `You requuested to update (partially) the employee with id ${id}.`,
+        data: returnedUpdatedEmployee,
+      });
+    });
 });
 
 // Delete       DELETE  (pass an id)
