@@ -73,8 +73,7 @@ app.delete("/:id", (req, res) => {
 
 mongoose.connect(connectionString).then(() => {
   console.log("MongoDB is connected.");
-});
-
-app.listen(3000, () => {
-  console.log("Express.js sever is listening on http://localhost:3000.");
+  app.listen(3000, () => {
+    console.log("Express.js sever is listening on http://localhost:3000.");
+  });
 });
