@@ -33,7 +33,7 @@ app.post("/", async (req, res) => {
 app.get("/", (req, res) => {
   employeeModel.find().then((allEmployees) => {
     res.send({
-      message: "You requested to get all the employees.",
+      message: "Fetched employees.",
       data: allEmployees,
     });
   });
@@ -44,8 +44,7 @@ app.get("/:id", (req, res) => {
   let id = req.params.id;
   employeeModel.findById(id).then((employee) => {
     res.send({
-      message: `You requuested to get the employee with id ${id}.`,
-      //   "You requested to get the employees with id " + id + ".",
+      message: `Fetched employee with id ${id}.`,
       data: employee,
     });
   });
@@ -59,7 +58,7 @@ app.put("/:id", (req, res) => {
     .findByIdAndUpdate(id, updatedEmployee, { new: true })
     .then((returnedUpdatedEmployee) => {
       res.send({
-        message: `You requuested to update (fully) the employee with id ${id}.`,
+        message: `Fully updated the employee with id ${id}.`,
         data: returnedUpdatedEmployee,
       });
     });
@@ -73,7 +72,7 @@ app.patch("/:id", (req, res) => {
     .findByIdAndUpdate(id, updatedEmployee, { new: true })
     .then((returnedUpdatedEmployee) => {
       res.send({
-        message: `You requuested to update (partially) the employee with id ${id}.`,
+        message: `Patially updated the employee with id ${id}.`,
         data: returnedUpdatedEmployee,
       });
     });
@@ -85,7 +84,7 @@ app.delete("/:id", (req, res) => {
 
   employeeModel.findByIdAndDelete(id).then((deletedEmployee) => {
     res.send({
-      message: `You requuested to delete the employee with id ${id}.`,
+      message: `Deleted the employee with id ${id}.`,
       data: deletedEmployee,
     });
   });
