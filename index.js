@@ -9,6 +9,14 @@ const connectionString =
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Schema and Model for "Employee" Cluster.
+const employeeSchema = new mongoose.Schema({
+  name: String,
+  age: Number,
+  isGraduate: Boolean,
+});
+const employeeModel = mongoose.model("Employee", employeeSchema);
+
 // #region: API calls.
 
 // Create       POST  (pass full object)
@@ -70,7 +78,6 @@ app.delete("/:id", (req, res) => {
 //#endregion: API calls.
 
 // Mongoose Code:
-
 mongoose.connect(connectionString).then(() => {
   console.log("MongoDB is connected.");
   app.listen(3000, () => {
