@@ -55,6 +55,13 @@ app.patch("/:id", (req, res) => {
 });
 
 // Delete       DELETE  (pass an id)
+app.delete("/:id", (req, res) => {
+  let id = req.params.id;
+  res.send({
+    message: `You requuested to delete the employee with id ${id}.`,
+    data: { id: id },
+  });
+});
 
 //#endregion: API calls.
 
