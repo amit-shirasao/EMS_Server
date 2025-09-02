@@ -1,37 +1,33 @@
-const http = require("http");
+const express = require("express");
+const app = express();
 
-const server = http.createServer((req, res) => {
-  switch (req.method) {
-    case "POST":
-      res.end("You want to create a new employee.");
-      break;
+// Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-    case "GET":
-      let id = req.url.split("/")[1];
-      if (id) {
-        res.end("You want to get a certain employee.");
-      } else {
-        res.end("You want to get all employees.");
-      }
-      break;
+// #region: API calls.
 
-    case "PUT":
-        res.end("You want to update a certain employee completely.");
-      break;
+// Create       POST  
+app.post('/', (req, res)=>{
+    let newEmp = req.body;
+    res.send({
+        "message": "You requested to create an employee.",
+        "data": newEmp
+    })
+})   
 
-    case "PATCH":
-        res.end("You want to update a certain employee partially.");
-      break;
+// Read All     GET 
 
-    case "DELETE":
-        res.end("You want to delete a certain employee.");
-      break;
+// Read One     GET     (pass an id)
 
-    default:
-      break;
-  }
-});
+// Update Fully         PUT         (pass an id and full object)
 
-server.listen(3000, "localhost", () => {
-  console.log("Server is listening to http://localhost:3000.");
+// Update Partially     PATCH       (pass an id and partial object)
+
+// Delete       DELETE  (pass an id)
+
+//#endregion: API calls.
+
+app.listen(3000, () => {
+  console.log("Express.js sever is listening on http://localhost:3000.");
 });
