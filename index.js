@@ -7,7 +7,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // #region: API calls.
 
-// Create       POST  
+// Create       POST  (pass full object)
 app.post('/', (req, res)=>{
     let newEmp = req.body;
     res.send({
@@ -17,6 +17,12 @@ app.post('/', (req, res)=>{
 })   
 
 // Read All     GET 
+app.get('/', (req, res)=>{
+    res.send({
+        "message": "You requested to get all the employees.",
+        "data": null
+    })
+})
 
 // Read One     GET     (pass an id)
 
