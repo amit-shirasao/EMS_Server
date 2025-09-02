@@ -8,23 +8,31 @@ app.use(express.urlencoded({ extended: true }));
 // #region: API calls.
 
 // Create       POST  (pass full object)
-app.post('/', (req, res)=>{
-    let newEmp = req.body;
-    res.send({
-        "message": "You requested to create an employee.",
-        "data": newEmp
-    })
-})   
+app.post("/", (req, res) => {
+  let newEmp = req.body;
+  res.send({
+    message: "You requested to create an employee.",
+    data: newEmp,
+  });
+});
 
-// Read All     GET 
-app.get('/', (req, res)=>{
-    res.send({
-        "message": "You requested to get all the employees.",
-        "data": null
-    })
-})
+// Read All     GET
+app.get("/", (req, res) => {
+  res.send({
+    message: "You requested to get all the employees.",
+    data: null,
+  });
+});
 
 // Read One     GET     (pass an id)
+app.get("/:id", (req, res) => {
+  let id = req.params.id;
+  res.send({
+    message: `You requuested to get the employee with id ${id}.`,
+    //   "You requested to get the employees with id " + id + ".",
+    data: { id: id },
+  });
+});
 
 // Update Fully         PUT         (pass an id and full object)
 
