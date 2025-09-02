@@ -35,6 +35,14 @@ app.get("/:id", (req, res) => {
 });
 
 // Update Fully         PUT         (pass an id and full object)
+app.put("/:id", (req, res) => {
+  let id = req.params.id;
+  let updatedEmployee = req.body;
+  res.send({
+    message: `You requuested to update (fully) the employee with id ${id}.`,
+    data: updatedEmployee,
+  });
+});
 
 // Update Partially     PATCH       (pass an id and partial object)
 
