@@ -42,10 +42,12 @@ app.get("/", (req, res) => {
 // Read One     GET     (pass an id)
 app.get("/:id", (req, res) => {
   let id = req.params.id;
-  res.send({
-    message: `You requuested to get the employee with id ${id}.`,
-    //   "You requested to get the employees with id " + id + ".",
-    data: { id: id },
+  employeeModel.findById(id).then((employee) => {
+    res.send({
+      message: `You requuested to get the employee with id ${id}.`,
+      //   "You requested to get the employees with id " + id + ".",
+      data: employee,
+    });
   });
 });
 
