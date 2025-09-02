@@ -20,10 +20,11 @@ const employeeModel = mongoose.model("Employee", employeeSchema);
 // #region: API calls.
 
 // Create       POST  (pass full object)
-app.post("/", (req, res) => {
-  let newEmp = req.body;
+app.post("/", async (req, res) => {
+  let newEmp = new employeeModel(req.body);
+  await newEmp.save();
   res.send({
-    message: "You requested to create an employee.",
+    message: "Employee got created.",
     data: newEmp,
   });
 });
