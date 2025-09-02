@@ -55,10 +55,14 @@ app.get("/:id", (req, res) => {
 app.put("/:id", (req, res) => {
   let id = req.params.id;
   let updatedEmployee = req.body;
-  res.send({
-    message: `You requuested to update (fully) the employee with id ${id}.`,
-    data: updatedEmployee,
-  });
+  employeeModel
+    .findByIdAndUpdate(id, updatedEmployee, { new: true })
+    .then((returnedUpdatedEmployee) => {
+      res.send({
+        message: `You requuested to update (fully) the employee with id ${id}.`,
+        data: returnedUpdatedEmployee,
+      });
+    });
 });
 
 // Update Partially     PATCH       (pass an id and partial object)
