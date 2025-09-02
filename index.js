@@ -45,6 +45,14 @@ app.put("/:id", (req, res) => {
 });
 
 // Update Partially     PATCH       (pass an id and partial object)
+app.patch("/:id", (req, res) => {
+  let id = req.params.id;
+  let updatedEmployee = req.body;
+  res.send({
+    message: `You requuested to update (partially) the employee with id ${id}.`,
+    data: updatedEmployee,
+  });
+});
 
 // Delete       DELETE  (pass an id)
 
