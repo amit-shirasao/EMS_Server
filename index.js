@@ -1,3 +1,4 @@
+const cors = require("cors");
 const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
@@ -8,6 +9,7 @@ const connectionString =
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 // Schema and Model for "Employee" Cluster.
 const employeeSchema = new mongoose.Schema({
