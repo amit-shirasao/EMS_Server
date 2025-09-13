@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "run-locally": "nodemon index.js",
-    "build": "./node_modules/.bin/pm2 restart index.js || ./node_modules/.bin/pm2 start index.js --name 'ems-api'"
+    "build": "./node_modules/.bin/pm2 restart index.js || ./node_modules/.bin/pm2 start index.js --name 'ems-api.shirasao.com'"
   },
   "keywords": [
     "EMS",
